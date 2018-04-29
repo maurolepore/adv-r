@@ -10,7 +10,7 @@ The user-facing opposite of quotation is unquotation: it gives the _user_ the ab
 
 This chapter begins with a discussion of evaluation in its purest form with `rlang::eval_bare()` which evaluates an expression in given environment. We'll then see how these ideas are used to implement a handful of base R functions, and then learn about the similar `base::eval()`.
 
-The meat of the chapter focusses on extensions needed to implement evaluation robustly. There are are two big new ideas:
+The meat of this chapter focusses on extensions needed to implement evaluation robustly. There are are two big new ideas:
 
 *   We need a new data structure that captures both the expression __and__ then
     environment associated with each function argument. We call this data 
@@ -18,7 +18,7 @@ The meat of the chapter focusses on extensions needed to implement evaluation ro
     
 *   `base::eval()` supports evaluating an expression in the context of a data 
     frame and an environment. We formalise this idea by calling it __data mask__
-    and to resolve the ambiguity it creates, introduce the idea of data
+    and, to resolve the ambiguity it creates, introduce the idea of data
     pronouns.
 
 Together, quasiquotation, quosures, data masks, and pronouns form what we call __tidy evaluation__, or tidy eval for short. Tidy eval provides a principled approach to NSE that makes it possible to use such functions both interactively and embedded with other functions. We'll finish off the chapter showing the basic pattern you use to wrap quasiquoting functions, and how you can adapt that pattern base R NSE functions.
@@ -27,7 +27,7 @@ Together, quasiquotation, quosures, data masks, and pronouns form what we call _
 
 ### Prerequisites {-}
 
-Environments play a very important big role in evaluation, so make sure you're familiar with the basics in [Environments].
+Environments play a very important role in evaluation, so make sure you're familiar with the basics in [Environments].
 
 ```{r setup}
 library(rlang)
