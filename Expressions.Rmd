@@ -796,7 +796,7 @@ find_assign({
 })
 ```
 
-Now we need to make our function more robust by coming up with examples intended to break it. What happens we assign to the same variable multiple times?
+Now we need to make our function more robust by coming up with examples intended to break it. What happens if we assign to the same variable multiple times?
 
 ```{r}
 find_assign({
