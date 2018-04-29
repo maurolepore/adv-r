@@ -170,7 +170,7 @@ expr(x + y)
 expr(1 / 2 / 3)
 ```
 
-(Remember that white space and comments are not part of the AST, so will not be captured by an quoting function.)
+(Remember that white space and comments are not part of the AST, so will not be captured by any quoting function.)
 
 `expr()` is great for interactive exploration, because it captures what you, the developer, typed. It's not useful inside a function:
 
@@ -210,7 +210,7 @@ val <- exprs(x = )
 is_missing(val$x)
 ```
 
-There's not much you can do with a list of expressions yet, but we'll see a few techniques later in [case studies](quasi-case-studies): using purrr to work with list of expressions turns out to be a surprisingly powerful tool.
+There's not much you can do with a list of expressions yet, but we'll see a few techniques later in [case studies](quasi-case-studies): using purrr to work with lists of expressions turns out to be a surprisingly powerful tool.
 
 Use `enexpr()` and `enexprs()` inside a function when you want to capture the expressions supplied as arguments _by the user_ of that function. Use `expr()` and `exprs()` when you want to capture expressions that _you_ supply.
 
@@ -223,7 +223,7 @@ quote(x + y)
 quote(1 / 2 / 3)
 ```
 
-It is identical to `expr()` except that does not support unquoting, so it a quoting function, not a quasiquoting function.
+It is identical to `expr()` except that does not support unquoting, so it is a quoting function, not a quasiquoting function.
 
 The base function closest to `enexpr()` is `substitute()`:
 
