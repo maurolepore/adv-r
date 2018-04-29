@@ -595,7 +595,7 @@ intercept <- 10
 coefs <- c(x1 = 5, x2 = -4)
 ```
 
-And you want to convert it into an expression like `10 + (5 * x1) + (-4 * x2)`. The first thing we need to turn is turn the character names vector into a list of symbols. `rlang::syms()` is designed precisely for this case:
+And you want to convert it into an expression like `10 + (5 * x1) + (-4 * x2)`. The first thing we need is to turn the names of the character vector into a list of symbols. `rlang::syms()` is designed precisely for this case:
 
 ```{r}
 coef_sym <- syms(names(coefs))
@@ -669,7 +669,7 @@ Note the name of the first argument: `.data`. This is a standard convention thro
 
 One occassionally useful tool that's missing from base R is the ability to extract a slice of an array given a dimension and an index. For example, we'd like to write `slice(x, 2, 1)` to extract the first slice along the second dimension, which you can write as `x[, 1, ]`. 
 
-We'll need to generated a call will multiple missing arguments. Fortunately is easy with `rep()` and `missing_arg()`. Once we have those arguments, we can unquote-splice them into a call:
+We'll need to generated a call with multiple missing arguments. Fortunately is easy with `rep()` and `missing_arg()`. Once we have those arguments, we can unquote-splice them into a call:
 
 ```{r}
 indices <- rep(list(missing_arg()), 3)
@@ -714,7 +714,7 @@ One application is to create functions that work like `graphics::curve()`. `curv
 curve(sin(exp(4 * x)), n = 1000)
 ```
 
-Here `x` is a pronoun. As with `.` in pipelines and `.x` and `.y` in purrr functioanls, `x` doesn't represent a single concrete value, but is instead a placeholder that varies over the range of the plot. Functions, like `curve()`, that use a expression containing a pronoun are known as __anaphoric__ functions[^anaphora].
+Here `x` is a pronoun. As with `.` in pipelines and `.x` and `.y` in purrr functioanls, `x` doesn't represent a single concrete value, but is instead a placeholder that varies over the range of the plot. Functions, like `curve()`, that use an expression containing a pronoun are known as __anaphoric__ functions[^anaphora].
 
 [^anaphora]: Anaphoric comes from the linguistics term "anaphora", an expression that is context dependent. Anaphoric functions are found in [Arc](http://www.arcfn.com/doc/anaphoric.html) (a LISP like language), [Perl](http://www.perlmonks.org/index.pl?node_id=666047), and [Clojure](http://amalloy.hubpages.com/hub/Unhygenic-anaphoric-Clojure-macros-for-fun-and-profit).
 
@@ -793,7 +793,7 @@ Note that this is often useful if the higher order function have arguments that 
 
 ## Dot-dot-dot (`...`)
 
-Quasiquotation ensures that every quoted argument has an escape hatch that allows the user to unquote, or evaluated, selected components, if needed. A similar and related needs arises with functions that take arbitrary additional arguments with `...`. Take the following two motivating problems:
+Quasiquotation ensures that every quoted argument has an escape hatch that allows the user to unquote, or evaluate, selected components, if needed. A similar and related need arises with functions that take arbitrary additional arguments with `...`. Take the following two motivating problems:
 
 *   What do you do if the elements you want to put in `...` are already stored 
     in a list? For example, imagine you have a list of data frames that 
